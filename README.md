@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Web Service - UIS Go 🚀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+¡Hola! Bienvenido al repositorio del backend de **UIS Go**.
 
-## Available Scripts
+Este proyecto contiene toda la lógica del servidor (API) que da vida a la aplicación móvil y web. Aquí gestionamos desde la autenticación de usuarios hasta los chats y las actividades en tiempo real.
 
-In the project directory, you can run:
+## 🛠️ ¿Qué tecnologías usamos?
 
-### `npm start`
+El servicio está construido principalmente sobre **Python**, enfocado en rendimiento y facilidad de uso:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+*   **FastAPI**: Nuestro framework principal (rápido y moderno).
+*   **PostgreSQL**: Base de datos relacional.
+*   **SQLAlchemy & Alembic**: Para manejar los modelos de datos y las migraciones de forma ordenada.
+*   **Docker**: Listo para desplegarse en contenedores.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ⚙️ Configuración Local
 
-### `npm test`
+Si quieres correr este proyecto en tu máquina, sigue estos pasos sencillos:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Prepara el entorno
+Lo ideal es crear un entorno virtual para no mezclar librerías:
 
-### `npm run build`
+```bash
+# Crea el entorno
+python -m venv venv
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Actívalo (Mac/Linux)
+source venv/bin/activate
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# O en Windows
+venv\Scripts\activate
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Instala las dependencias
+Todas las librerías necesarias están en la carpeta `Backend`:
 
-### `npm run eject`
+```bash
+pip install -r Backend/requirements.txt
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3. Base de Datos
+Asegúrate de tener una instancia de PostgreSQL corriendo. El proyecto usa Alembic para crear las tablas:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+# Ejecutar migraciones (estando en la raíz)
+alembic upgrade head
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 4. ¡A correr!
+Para iniciar el servidor de desarrollo:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+cd Backend
+uvicorn app.main:app --reload
+```
 
-## Learn More
+La API debería estar disponible en `http://localhost:8000`. Puedes ver la documentación interactiva automática en `http://localhost:8000/docs`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+*Este repositorio contiene únicamente el código del Web Service. El cliente web/móvil se encuentra en su propio repositorio.*
