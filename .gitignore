@@ -1,9 +1,7 @@
 # Frontend / Web App exclusions
-src/
-public/
-package.json
-package-lock.json
 node_modules/
+build/
+dist/
 
 # Python / Backend exclusions
 __pycache__/
